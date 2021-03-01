@@ -71,7 +71,7 @@ function App() {
     const accessType = 'offline'
     const state = 'state_parameter_passthrough_value'
     const scope = 'https://www.googleapis.com/auth/calendar'
-    const redirectURI = 'http://localhost:8080'
+    const redirectURI = window.location.origin
     const prompt = 'consent'
     const isGranted = 'true'
     const redirectOauthURL = `${oauthURL}?client_id=${REACT_APP_GOOGLE_CLIENT_ID}&response_type=${responseType}&access_type=${accessType}&state=${state}&scope=${scope}&redirect_uri=${redirectURI}&prompt=${prompt}&include_granted_scopes=${isGranted}`

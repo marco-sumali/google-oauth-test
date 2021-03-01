@@ -7,6 +7,7 @@ function App() {
   const [code, setCode] = useState('')
   const [accessToken, setAccessToken] = useState('')
   const [refreshToken, setRefreshToken] = useState('')
+  const [isCalendarGranted, setIsCalendarGranted] = useState('')
   const {REACT_APP_GOOGLE_CLIENT_ID, REACT_APP_GOOGLE_CLIENT_SECRET} = process.env
   const gapi = window.gapi  
   
@@ -49,9 +50,17 @@ function App() {
     const options = {method: 'post', body: JSON.stringify(data)}
 
     const tokenObj = await (await fetch(googleTokenURL, options)).json()
-    const {access_token, expires_in, refresh_token, token_type} = tokenObj
+    const {access_token, expires_in, refresh_token, token_type, scope} = tokenObj
     setAccessToken(access_token)
     setRefreshToken(refresh_token)
+
+    const isGrantedRegex = new RegExp('https://www.googleapis.com/auth/calendar', 'i')
+    const isGranted = isGrantedRegex.test(scope)
+    if (isGranted) {
+      setIsCalendarGranted('Yes')
+    } else {
+      setIsCalendarGranted('No')
+    }
     console.log('token:', tokenObj)
     }
   }, [])
@@ -100,6 +109,9 @@ function App() {
         <div>------------------------</div>
         <div>Refresh Token:</div>
         <div>{refreshToken}</div>
+        <div>------------------------</div>
+        <div>Calendar Access Granted:</div>
+        <div>{isCalendarGranted}</div>
         <div>------------------------</div>
         <button onClick={signIn}>Google Sign In</button>
         <button onClick={signOut}>Sign Out</button>

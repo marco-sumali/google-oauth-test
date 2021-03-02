@@ -101,7 +101,24 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div>Code:</div>
+        <div style={{position: 'relative'}}>
+          <div style={{position: 'fixed', bottom: 25, right: 25}}>
+            <button 
+              onClick={() => alert('Open Chat Bot')}
+              style={{
+                fontSize: '1em', 
+                color: '#ffffff',
+                padding: '4px 16px',
+                borderRadius: '25px', 
+                outline: 'none', 
+                backgroundColor: '#4285F4',
+                border: '2px solid #000000',
+              }}>2359 Chat Bot</button>
+          </div>
+        </div>
+        <iframe src="https://www.revolut.com/help" style={{border:'solid 1px #777', height: '100vh'}} width="100%" frameborder="0"></iframe>
+        {/* <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FJakarta&amp;src=bWFyY28uc3VtYWxpQDIzNTltZWRpYS5jb20&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=ZW4uaW5kb25lc2lhbiNob2xpZGF5QGdyb3VwLnYuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23039BE5&amp;color=%2333B679&amp;color=%230B8043" style={{border:'solid 1px #777'}} width="800" height="600" frameborder="0" scrolling="no"></iframe> */}
+        {/* <div>Code:</div>
         <div>{code}</div>
         <div>------------------------</div>
         <div>Access Token:</div>
@@ -116,7 +133,7 @@ function App() {
         <button onClick={signIn}>Google Sign In</button>
         <button onClick={signOut}>Sign Out</button>
         <button onClick={checkUser}>Check User</button>
-        <button onClick={serverSignIn}>Server Google Sign In</button>
+        <button onClick={serverSignIn}>Server Google Sign In</button> */}
       </header>
     </div>
   );
